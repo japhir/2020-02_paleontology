@@ -103,11 +103,11 @@ friends!
 
 * Practical 8
 ** read the data
-I prepared a slightly cleaner CSV sheet, which we can read into R more easily. You can download it here:
+I prepared a slightly cleaner CSV sheet, which we can read into R more easily.
+You can download it [[https://github.com/japhir/2020-02_paleontology/blob/master/biostrat_clean.csv][here]].
 
-See the end of the document for a copy-pastable version.
-
-I rename some columns here so that I can type less and we don't have spaces in the column names.
+I rename some columns here so that I can type less and we don't have spaces in
+the column names.
 
 #+begin_src R
   strat <- read_csv("biostrat_clean.csv", skip = 1) %>%
@@ -156,6 +156,8 @@ customary to plot the series with a line, which we add with ~geom_line~.
 
 #+RESULTS:
 [[file:n_spec.png]]
+
+[[https://raw.githubusercontent.com/japhir/2020-02_paleontology/master/n_spec.png]]
 
 To learn more about creating plots with ~ggplot2~, I highly recommend following
 the online course [[https://www.datacamp.com/courses/data-visualization-with-ggplot2-1][data visualisation with ggplot2]] and [[https://r4ds.had.co.nz/data-visualisation.html][chapter 3 of r4ds: data
@@ -230,6 +232,8 @@ With the tidy data, creating an area chart is very easy:
 
 #+RESULTS:
 [[file:habitat_pref.png]]
+
+[[https://raw.githubusercontent.com/japhir/2020-02_paleontology/master/habitat_pref.png]]
 
 Here we adjust the colours manually. Note that generally it's not nice to use
 manual colour scales because it's hard to estimate what colourblind people are
@@ -366,6 +370,8 @@ have to make many adjustments to your subfigures.
 #+RESULTS:
 [[file:diversity.png]]
 
+[[https://raw.githubusercontent.com/japhir/2020-02_paleontology/master/diversity.png]]
+
 And to show that the tidy way results in the same plot, we tidy the data even
 further and then using ~facets~.
 #+begin_src R :results graphics file :file tidy_diversity.png :width 600
@@ -379,6 +385,8 @@ further and then using ~facets~.
 
 #+RESULTS:
 [[file:tidy_diversity.png]]
+
+[[https://raw.githubusercontent.com/japhir/2020-02_paleontology/master/tidy_diversity.png]]
 
 * conclusion
 This was a quick look into some of the features of ~R~ for data analysis and
