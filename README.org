@@ -2,6 +2,7 @@
 #+OPTIONS: ^:{}
 #+PROPERTY: header-args:R  :session *R* :exports both :results output :eval no-export
 #+AUTHOR: Ilja J. Kocken
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 
 #+begin_src R :exports none :results none
   options(crayon.enabled = FALSE)
