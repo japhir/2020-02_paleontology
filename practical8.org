@@ -1,5 +1,7 @@
-* Practical 8
-** read the data
+#+TITLE: Practical 8
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+
+* read the data
 I prepared a slightly cleaner CSV sheet, which we can read into R more easily.
 You can download it [[https://github.com/japhir/2020-02_paleontology/blob/master/biostrat_clean.csv][here]].
 
@@ -34,7 +36,7 @@ identified as.
 You can also read in the raw excel file directly with the package ~readxl~ if you
 want.
 
-** Graph of the species number per locality.
+* Graph of the species number per locality.
 The first exercise is the easiest. We take our data ~strat~ and pipe it (~%>%~) to
 the ~ggplot~ function. You can read this as: take ~strat~ and then do ~ggplot~ with
 it.
@@ -64,8 +66,8 @@ If you don't like the gray grid behind the data, have a look at ~?theme~. You ca
 easily change the plot to a black and white classical plot with a ~+
 theme_classic()~ at the end.
 
-** Graph of habitat preference
-*** tidy the data
+* Graph of habitat preference
+** tidy the data
 For this plot we need to re-arrange the data a little bit. Right now all the
 percentages of the rodents are in different column. For easy plotting and data
 processing, usually we want so-called ~tidy~ data. This means that each row
@@ -116,7 +118,7 @@ to:
 
 read up on creating tidy data in [[https://r4ds.had.co.nz/tidy-data.html][r4ds chapter 12]].
 
-*** create the plot
+** create the plot
 With the tidy data, creating an area chart is very easy:
 #+begin_src R :results graphics file :file habitat_pref.png :width 600
   strat_hab %>%
@@ -141,7 +143,7 @@ can make intuitive sense, I set it manually. I like to use
 Oh, and what does ~::~ mean you ask? It means: look in package ~viridis~ for the
 function ~scale_fill_viridis~.
 
-*** what's up at 16 Ma?
+** what's up at 16 Ma?
 Notice the weird outlier near 16 Ma, where the total is larger than 100%!
 
 Let's figure out which sample it is.
@@ -164,11 +166,11 @@ You will always have some noise in your data. With R, it's quite easy to drill
 down into where it is and what causes it. Unfortunately, it won't stop you from
 making mistakes in the first place 😉.
 
-** Graph of Diversity and Equity
-*** compute diversity and equity
+* Graph of Diversity and Equity
+** compute diversity and equity
 Read the handout about how we calculate diversity and equity.
 
-**** by column
+*** by column
 We ~mutate_at~ here to do calculations for many columns. However, this is an
 instance in which having this as tidy data would make some more complex examples
 easier!
@@ -191,7 +193,7 @@ I would recommend.
 # mutate(diversity = 1 / (rowSums(across(D.franconicus_sq:Keramidomys_sq), na.rm = TRUE))) %>%
 # evenness = diversity / `N of SPECIES`)
 
-**** tidy
+*** tidy
 In stead, I would recommend to tidy your data as follows:
 
 #+begin_src R
@@ -245,7 +247,7 @@ Note that again the ~N of SPECIES~ in the original sheet is slightly different f
 | 13.96 | LP4A  | 0.000346865721341954 |        8 |           10 | 4.33582151677443e-05 |
 | 15.87 | COL-D | 0.000661489409554553 |       12 |           13 | 5.51241174628794e-05 |
 
-*** create the plots
+** create the plots
 First we create the plot based on ~strat_div~, the original data with the new
 columns for diversity and evenness. We create two separate plots and then add
 them together as subplots using the package ~patchwork~. This is perfect when you
