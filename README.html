@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-11 Wed 17:19 -->
+<!-- 2020-04-01 Wed 13:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Making Paleontology&#x2014;fauna excercise 8 in R</title>
@@ -247,41 +247,20 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgeeb6738">1. Preparation</a>
+<li><a href="#orgb4ebc63">1. Preparation</a>
 <ul>
-<li><a href="#orgc41252e">1.1. installation</a></li>
-<li><a href="#org7269e3a">1.2. load the libraries</a></li>
-<li><a href="#org8279119">1.3. getting started</a></li>
-<li><a href="#org921d5e4">1.4. getting help</a></li>
+<li><a href="#org8150560">1.1. installation</a></li>
+<li><a href="#orgdae1ea9">1.2. load the libraries</a></li>
+<li><a href="#org09d9664">1.3. getting started</a></li>
+<li><a href="#org8b2cc38">1.4. getting help</a></li>
 </ul>
 </li>
-<li><a href="#org417c080">2. Practical 8</a>
-<ul>
-<li><a href="#org5a9d91a">2.1. read the data</a></li>
-<li><a href="#org415edec">2.2. Graph of the species number per locality.</a></li>
-<li><a href="#org0eba029">2.3. Graph of habitat preference</a>
-<ul>
-<li><a href="#orgf915ade">2.3.1. tidy the data</a></li>
-<li><a href="#org23c8f6a">2.3.2. create the plot</a></li>
-<li><a href="#org52ac2eb">2.3.3. what's up at 16 Ma?</a></li>
-</ul>
-</li>
-<li><a href="#orgb28b42f">2.4. Graph of Diversity and Equity</a>
-<ul>
-<li><a href="#orgb99caf2">2.4.1. compute diversity and equity</a></li>
-<li><a href="#org6c11cf5">2.4.2. create the plots</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgce4662c">3. conclusion</a></li>
-<li><a href="#org764c312">4. sessionInfo</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgeeb6738" class="outline-2">
-<h2 id="orgeeb6738"><span class="section-number-2">1</span> Preparation</h2>
+<div id="outline-container-orgb4ebc63" class="outline-2">
+<h2 id="orgb4ebc63"><span class="section-number-2">1</span> Preparation</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 If you're curious about learning R, this exercise could be a fun little first
@@ -308,8 +287,8 @@ and enjoy the struggle for a bit.
 </p>
 </div>
 
-<div id="outline-container-orgc41252e" class="outline-3">
-<h3 id="orgc41252e"><span class="section-number-3">1.1</span> installation</h3>
+<div id="outline-container-org8150560" class="outline-3">
+<h3 id="org8150560"><span class="section-number-3">1.1</span> installation</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Install <a href="https://www.r-project.org/">R</a> and <a href="https://rstudio.com/">RStudio</a>. R is the programming language and RStudio is a friendly
@@ -328,7 +307,7 @@ and typing, e.g.:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R">install.packages("ggplot2")
+<pre class="src src-R">install.packages<span style="color: #51afef;">(</span><span style="color: #98be65;">"ggplot2"</span><span style="color: #51afef;">)</span>
 </pre>
 </div>
 
@@ -338,7 +317,7 @@ install them all at once with:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R">install.packages("tidyverse")
+<pre class="src src-R">install.packages<span style="color: #51afef;">(</span><span style="color: #98be65;">"tidyverse"</span><span style="color: #51afef;">)</span>
 </pre>
 </div>
 
@@ -349,18 +328,18 @@ amazing.
 </div>
 </div>
 
-<div id="outline-container-org7269e3a" class="outline-3">
-<h3 id="org7269e3a"><span class="section-number-3">1.2</span> load the libraries</h3>
+<div id="outline-container-orgdae1ea9" class="outline-3">
+<h3 id="orgdae1ea9"><span class="section-number-3">1.2</span> load the libraries</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 These commands make the package functions available for use in your session:
 </p>
 <div class="org-src-container">
-<pre class="src src-R">library(readr)      # to read in the csv file (or use readxslx to read in excel files)
-library(ggplot2)    # for plotting
-library(patchwork)  # for composite plots
-library(dplyr)      # for tidy data manipulation
-library(tidyr)
+<pre class="src src-R">library<span style="color: #51afef;">(</span>readr<span style="color: #51afef;">)</span>      <span style="color: #5B6268;"># </span><span style="color: #5B6268;">to read in the csv file (or use readxslx to read in excel files)</span>
+library<span style="color: #51afef;">(</span>ggplot2<span style="color: #51afef;">)</span>    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">for plotting</span>
+library<span style="color: #51afef;">(</span>patchwork<span style="color: #51afef;">)</span>  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">for composite plots</span>
+library<span style="color: #51afef;">(</span>dplyr<span style="color: #51afef;">)</span>      <span style="color: #5B6268;"># </span><span style="color: #5B6268;">for tidy data manipulation</span>
+library<span style="color: #51afef;">(</span>tidyr<span style="color: #51afef;">)</span>
 </pre>
 </div>
 
@@ -379,8 +358,8 @@ The following objects are masked from ‘package:base’:
 </div>
 </div>
 
-<div id="outline-container-org8279119" class="outline-3">
-<h3 id="org8279119"><span class="section-number-3">1.3</span> getting started</h3>
+<div id="outline-container-org09d9664" class="outline-3">
+<h3 id="org09d9664"><span class="section-number-3">1.3</span> getting started</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 As a start, I highly recommend reading through the freely available book <a href="https://r4ds.had.co.nz/">R for
@@ -391,16 +370,16 @@ right from R.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R">install.packges("swirl")
-library(swirl)
-swirl()
+<pre class="src src-R">install.packges<span style="color: #51afef;">(</span><span style="color: #98be65;">"swirl"</span><span style="color: #51afef;">)</span>
+library<span style="color: #51afef;">(</span>swirl<span style="color: #51afef;">)</span>
+swirl<span style="color: #51afef;">()</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org921d5e4" class="outline-3">
-<h3 id="org921d5e4"><span class="section-number-3">1.4</span> getting help</h3>
+<div id="outline-container-org8b2cc38" class="outline-3">
+<h3 id="org8b2cc38"><span class="section-number-3">1.4</span> getting help</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 When you have problems or questions, have a look at any error messages if
@@ -427,801 +406,10 @@ friends!
 </div>
 </div>
 </div>
-
-<div id="outline-container-org417c080" class="outline-2">
-<h2 id="org417c080"><span class="section-number-2">2</span> Practical 8</h2>
-<div class="outline-text-2" id="text-2">
-</div>
-<div id="outline-container-org5a9d91a" class="outline-3">
-<h3 id="org5a9d91a"><span class="section-number-3">2.1</span> read the data</h3>
-<div class="outline-text-3" id="text-2-1">
-<p>
-I prepared a slightly cleaner CSV sheet, which we can read into R more easily. You can download it here:
-</p>
-
-<p>
-See the end of the document for a copy-pastable version.
-</p>
-
-<p>
-I rename some columns here so that I can type less and we don't have spaces in the column names.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-R">strat &lt;- read_csv("biostrat_clean.csv", skip = 1) %&gt;%
-  rename(c(bio = "LOCAL BIOZONE", age = "NUMERICAL AGE in MA", loc = "LOCCODE", n_m12 = "N M12", N = "N of SPECIES",
-	 dry = "% DRY RODENTS", catholic = "% CATHOLIC", wet = "% WET RODENTS")) %&gt;%
-  select(-LOCCODE_1)
-</pre>
-</div>
-
-<pre class="example">
-Parsed with column specification:
-cols(
-  .default = col_double(),
-  `LOCAL BIOZONE` = col_character(),
-  LOCCODE = col_character(),
-  LOCCODE_1 = col_character()
-)
-See spec(...) for full column specifications.
-Warning message:
-Duplicated column names deduplicated: 'LOCCODE' =
-'LOCCODE_1' [64]
-</pre>
-
-<p>
-The output tells us how it read the csv file and what types each column was
-identified as.
-</p>
-
-<p>
-You can also read in the raw excel file directly with the package <code>readxl</code> if you
-want.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org415edec" class="outline-3">
-<h3 id="org415edec"><span class="section-number-3">2.2</span> Graph of the species number per locality.</h3>
-<div class="outline-text-3" id="text-2-2">
-<p>
-The first exercise is the easiest. We take our data <code>strat</code> and pipe it (<code>%&gt;%</code>) to
-the <code>ggplot</code> function. You can read this as: take <code>strat</code> and then do <code>ggplot</code> with
-it.
-</p>
-
-<p>
-Within the plot we specify so-called aesthetics with <code>aes</code>. This links columns of
-the data to things we can plot, in this case <code>x</code> and <code>y</code> for a simple scatter plot.
-Because we are dealing with a time series (albeit a discontinuos one) it is
-customary to plot the series with a line, which we add with <code>geom_line</code>.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-R">strat %&gt;%
-  ggplot(aes(x = age, y = N)) +
-  geom_line() +
-  labs(x = "Age (Ma)", y = "Number of species")
-</pre>
-</div>
-
-
-<div class="figure">
-<p><img src="n_spec.png" alt="n_spec.png" />
-</p>
-</div>
-
-<p>
-To learn more about creating plots with <code>ggplot2</code>, I highly recommend following
-the online course <a href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-1">data visualisation with ggplot2</a> and <a href="https://r4ds.had.co.nz/data-visualisation.html">chapter 3 of r4ds: data
-visualisation</a>.
-</p>
-
-<p>
-If you don't like the gray grid behind the data, have a look at <code>?theme</code>. You can
-easily change the plot to a black and white classical plot with a <code>+
-theme_classic()</code> at the end.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org0eba029" class="outline-3">
-<h3 id="org0eba029"><span class="section-number-3">2.3</span> Graph of habitat preference</h3>
-<div class="outline-text-3" id="text-2-3">
-</div>
-<div id="outline-container-orgf915ade" class="outline-4">
-<h4 id="orgf915ade"><span class="section-number-4">2.3.1</span> tidy the data</h4>
-<div class="outline-text-4" id="text-2-3-1">
-<p>
-For this plot we need to re-arrange the data a little bit. Right now all the
-percentages of the rodents are in different column. For easy plotting and data
-processing, usually we want so-called <code>tidy</code> data. This means that each row
-corresponds to one observation.
-</p>
-
-<p>
-In this case that would mean we'd repeat the age and location code three times,
-with one new variable <code>percentage</code> and another with the <code>habitat</code>.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-R">strat_hab &lt;- strat %&gt;%
-  # remove all non-essential columns and rename for easy access
-  select(age, loc, dry, catholic, wet) %&gt;%
-  # convert to long-format (this is something to look up and learn!)
-  pivot_longer(cols = c(dry, catholic, wet), values_to = "percentage", names_to = "habitat")
-</pre>
-</div>
-
-<p>
-To illustrate, we switch from:
-</p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-right" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-right" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">bio</th>
-<th scope="col" class="org-right">age</th>
-<th scope="col" class="org-left">loc</th>
-<th scope="col" class="org-left">D.franconicus</th>
-<th scope="col" class="org-left">D.koenigswaldi</th>
-<th scope="col" class="org-right">D.larteti</th>
-<th scope="col" class="org-left">Ligerimys ellipticus</th>
-<th scope="col" class="org-left">Keramidomys</th>
-<th scope="col" class="org-right">n_m12</th>
-<th scope="col" class="org-right">N</th>
-<th scope="col" class="org-right">dry</th>
-<th scope="col" class="org-right">catholic</th>
-<th scope="col" class="org-left">wet</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">E</td>
-<td class="org-right">13.93</td>
-<td class="org-left">LUM19</td>
-<td class="org-left">nil</td>
-<td class="org-left">nil</td>
-<td class="org-right">4</td>
-<td class="org-left">nil</td>
-<td class="org-left">nil</td>
-<td class="org-right">189</td>
-<td class="org-right">8</td>
-<td class="org-right">97.9</td>
-<td class="org-right">2.1</td>
-<td class="org-left">nil</td>
-</tr>
-
-<tr>
-<td class="org-left">nil</td>
-<td class="org-right">13.94</td>
-<td class="org-left">LP4B</td>
-<td class="org-left">nil</td>
-<td class="org-left">nil</td>
-<td class="org-right">28.9</td>
-<td class="org-left">nil</td>
-<td class="org-left">nil</td>
-<td class="org-right">483</td>
-<td class="org-right">11</td>
-<td class="org-right">93.2</td>
-<td class="org-right">6</td>
-<td class="org-left">0.8</td>
-</tr>
-
-<tr>
-<td class="org-left">nil</td>
-<td class="org-right">13.96</td>
-<td class="org-left">LP4A</td>
-<td class="org-left">nil</td>
-<td class="org-left">nil</td>
-<td class="org-right">32.4</td>
-<td class="org-left">nil</td>
-<td class="org-left">nil</td>
-<td class="org-right">82</td>
-<td class="org-right">10</td>
-<td class="org-right">91.6</td>
-<td class="org-right">8.4</td>
-<td class="org-left">nil</td>
-</tr>
-
-<tr>
-<td class="org-left">nil</td>
-<td class="org-right">13.97</td>
-<td class="org-left">LUM14</td>
-<td class="org-left">nil</td>
-<td class="org-left">nil</td>
-<td class="org-right">60.2</td>
-<td class="org-left">nil</td>
-<td class="org-left">nil</td>
-<td class="org-right">493</td>
-<td class="org-right">8</td>
-<td class="org-right">94.1</td>
-<td class="org-right">4.1</td>
-<td class="org-left">1.8</td>
-</tr>
-
-<tr>
-<td class="org-left">nil</td>
-<td class="org-right">13.98</td>
-<td class="org-left">LUM18</td>
-<td class="org-left">nil</td>
-<td class="org-left">nil</td>
-<td class="org-right">49.1</td>
-<td class="org-left">nil</td>
-<td class="org-left">nil</td>
-<td class="org-right">132</td>
-<td class="org-right">6</td>
-<td class="org-right">93.2</td>
-<td class="org-right">6.8</td>
-<td class="org-left">nil</td>
-</tr>
-
-<tr>
-<td class="org-left">nil</td>
-<td class="org-right">13.99</td>
-<td class="org-left">LUM17</td>
-<td class="org-left">nil</td>
-<td class="org-left">nil</td>
-<td class="org-right">25</td>
-<td class="org-left">nil</td>
-<td class="org-left">nil</td>
-<td class="org-right">108</td>
-<td class="org-right">9</td>
-<td class="org-right">90.2</td>
-<td class="org-right">4.9</td>
-<td class="org-left">4.9</td>
-</tr>
-</tbody>
-</table>
-
-<p>
-to:
-</p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-right" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-right">age</th>
-<th scope="col" class="org-left">loc</th>
-<th scope="col" class="org-left">habitat</th>
-<th scope="col" class="org-right">percentage</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-right">13.93</td>
-<td class="org-left">LUM19</td>
-<td class="org-left">dry</td>
-<td class="org-right">97.9</td>
-</tr>
-
-<tr>
-<td class="org-right">13.93</td>
-<td class="org-left">LUM19</td>
-<td class="org-left">catholic</td>
-<td class="org-right">2.1</td>
-</tr>
-
-<tr>
-<td class="org-right">13.93</td>
-<td class="org-left">LUM19</td>
-<td class="org-left">wet</td>
-<td class="org-right">nil</td>
-</tr>
-
-<tr>
-<td class="org-right">13.94</td>
-<td class="org-left">LP4B</td>
-<td class="org-left">dry</td>
-<td class="org-right">93.2</td>
-</tr>
-
-<tr>
-<td class="org-right">13.94</td>
-<td class="org-left">LP4B</td>
-<td class="org-left">catholic</td>
-<td class="org-right">6</td>
-</tr>
-
-<tr>
-<td class="org-right">13.94</td>
-<td class="org-left">LP4B</td>
-<td class="org-left">wet</td>
-<td class="org-right">0.8</td>
-</tr>
-</tbody>
-</table>
-
-<p>
-read up on creating tidy data in <a href="https://r4ds.had.co.nz/tidy-data.html">r4ds chapter 12</a>.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org23c8f6a" class="outline-4">
-<h4 id="org23c8f6a"><span class="section-number-4">2.3.2</span> create the plot</h4>
-<div class="outline-text-4" id="text-2-3-2">
-<p>
-With the tidy data, creating an area chart is very easy:
-</p>
-<div class="org-src-container">
-<pre class="src src-R">strat_hab %&gt;%
-  ggplot(aes(x = age, y = percentage, fill = factor(habitat, levels = c("dry", "catholic", "wet")))) +
-  # this plots each line as a polygon
-  geom_area() +
-  scale_fill_manual(values = c("dry" = "orange3", "catholic" = "brown4", "wet" = "blue4")) +
-  labs(x = "Age (Ma)", y = "Abundance (%)", fill = "Habitat preference")
-</pre>
-</div>
-
-
-<div class="figure">
-<p><img src="habitat_pref.png" alt="habitat_pref.png" />
-</p>
-</div>
-
-<p>
-Here we adjust the colours manually. Note that generally it's not nice to use
-manual colour scales because it's hard to estimate what colourblind people are
-able to see well. In this case, with only 3 values and where specific colours
-can make intuitive sense, I set it manually. I like to use
-<code>viridis::scale_fill_viridis</code> often!
-</p>
-
-<p>
-Oh, and what does <code>::</code> mean you ask? It means: look in package <code>viridis</code> for the
-function <code>scale_fill_viridis</code>.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org52ac2eb" class="outline-4">
-<h4 id="org52ac2eb"><span class="section-number-4">2.3.3</span> what's up at 16 Ma?</h4>
-<div class="outline-text-4" id="text-2-3-3">
-<p>
-Notice the weird outlier near 16 Ma, where the total is larger than 100%!
-</p>
-
-<p>
-Let's figure out which sample it is.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-R">strat_hab %&gt;%
-  group_by(age, loc) %&gt;%
-  summarize(total = sum(percentage)) %&gt;%
-  # filter those rows where the percentage is not 100
-  filter(total &gt; 100 | total &lt; 100)
-</pre>
-</div>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-right" />
-
-<col  class="org-left" />
-
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-right">age</th>
-<th scope="col" class="org-left">loc</th>
-<th scope="col" class="org-right">total</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-right">15.87</td>
-<td class="org-left">COL-D</td>
-<td class="org-right">99.8</td>
-</tr>
-
-<tr>
-<td class="org-right">15.89</td>
-<td class="org-left">COL-C</td>
-<td class="org-right">110</td>
-</tr>
-</tbody>
-</table>
-
-<p>
-You will always have some noise in your data. With R, it's quite easy to drill
-down into where it is and what causes it. Unfortunately, it won't stop you from
-making mistakes in the first place 😉.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgb28b42f" class="outline-3">
-<h3 id="orgb28b42f"><span class="section-number-3">2.4</span> Graph of Diversity and Equity</h3>
-<div class="outline-text-3" id="text-2-4">
-</div>
-<div id="outline-container-orgb99caf2" class="outline-4">
-<h4 id="orgb99caf2"><span class="section-number-4">2.4.1</span> compute diversity and equity</h4>
-<div class="outline-text-4" id="text-2-4-1">
-<p>
-Read the handout about how we calculate diversity and equity.
-</p>
-</div>
-
-<ol class="org-ol">
-<li><a id="org5d0f016"></a>by column<br />
-<div class="outline-text-5" id="text-2-4-1-1">
-<p>
-We <code>mutate_at</code> here to do calculations for many columns. However, this is an
-instance in which having this as tidy data would make some more complex examples
-easier!
-</p>
-
-<p>
-First we'll do the calculations in the way the dataframe is already set up.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-R">strat_div &lt;- strat %&gt;%
-  # first square all the species abundances
-  mutate_at(vars(D.franconicus:Keramidomys), ~ . ^ 2) %&gt;%
-  # this overwrites the columns! use a named list if you want new columns in
-  # stead. then calculate diversity and evennes
-  mutate(diversity = 1 / (rowSums(select(., D.franconicus:Keramidomys), na.rm = TRUE)),
-	 evenness = diversity / N)
-</pre>
-</div>
-
-<p>
-You don't have to understand all the steps here, since this is not the approach
-I would recommend.
-</p>
-</div>
-</li>
-
-<li><a id="orgc5b7f7f"></a>tidy<br />
-<div class="outline-text-5" id="text-2-4-1-2">
-<p>
-In stead, I would recommend to tidy your data as follows:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-R">tidystrat &lt;- strat %&gt;%
-  # remove the columns we are not interested in
-  select(-c(dry, catholic, wet, n_m12)) %&gt;%
-  # convert the species abundances to tidy format
-  pivot_longer(D.franconicus:Keramidomys, names_to = "species", values_to = "abundance")
-
-ev &lt;- tidystrat %&gt;%
-  # and for each age and locality, original row
-  group_by(age, loc) %&gt;%
-  # calculate the diversity (be very careful where you place parentheses!)
-  # notice that now we don't have to calculate the squares first.
-  summarize(diversity = 1 / sum(abundance ^ 2, na.rm = TRUE),
-	    # calculate the number of species
-	    n_manual = sum(abundance &gt; 0, na.rm = TRUE),
-	    # and for comparison get the ones from the original sheet
-	    n_from_sheet = mean(N, na.rm = TRUE)) %&gt;%
-  # calculate evenness
-  mutate(evenness = diversity / n_manual)
-</pre>
-</div>
-
-<p>
-While this is a little bit more code, I think it is more legible and it will
-make the next steps easier.
-</p>
-
-<p>
-Inspect <code>tidystrat</code> to see what it looks like!
-</p>
-<div class="org-src-container">
-<pre class="src src-R">head(tidystrat)
-</pre>
-</div>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-right" />
-
-<col  class="org-left" />
-
-<col  class="org-right" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">bio</th>
-<th scope="col" class="org-right">age</th>
-<th scope="col" class="org-left">loc</th>
-<th scope="col" class="org-right">N</th>
-<th scope="col" class="org-left">species</th>
-<th scope="col" class="org-left">abundance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">E</td>
-<td class="org-right">13.93</td>
-<td class="org-left">LUM19</td>
-<td class="org-right">8</td>
-<td class="org-left">D.franconicus</td>
-<td class="org-left">nil</td>
-</tr>
-
-<tr>
-<td class="org-left">E</td>
-<td class="org-right">13.93</td>
-<td class="org-left">LUM19</td>
-<td class="org-right">8</td>
-<td class="org-left">D.koenigswaldi</td>
-<td class="org-left">nil</td>
-</tr>
-
-<tr>
-<td class="org-left">E</td>
-<td class="org-right">13.93</td>
-<td class="org-left">LUM19</td>
-<td class="org-right">8</td>
-<td class="org-left">D.larteti</td>
-<td class="org-left">4</td>
-</tr>
-
-<tr>
-<td class="org-left">E</td>
-<td class="org-right">13.93</td>
-<td class="org-left">LUM19</td>
-<td class="org-right">8</td>
-<td class="org-left">D.hispanicus</td>
-<td class="org-left">nil</td>
-</tr>
-
-<tr>
-<td class="org-left">E</td>
-<td class="org-right">13.93</td>
-<td class="org-left">LUM19</td>
-<td class="org-right">8</td>
-<td class="org-left">D.moralesi</td>
-<td class="org-left">nil</td>
-</tr>
-
-<tr>
-<td class="org-left">E</td>
-<td class="org-right">13.93</td>
-<td class="org-left">LUM19</td>
-<td class="org-right">8</td>
-<td class="org-left">D.jordensi</td>
-<td class="org-left">nil</td>
-</tr>
-</tbody>
-</table>
-
-<p>
-Note that again the <code>N of SPECIES</code> in the original sheet is slightly different from our calculated one:
-</p>
-<div class="org-src-container">
-<pre class="src src-R">ev %&gt;%
-  filter(n_manual != n_from_sheet)
-</pre>
-</div>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-right" />
-
-<col  class="org-left" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-right">age</th>
-<th scope="col" class="org-left">loc</th>
-<th scope="col" class="org-right">diversity</th>
-<th scope="col" class="org-right">n_manual</th>
-<th scope="col" class="org-right">n_from_sheet</th>
-<th scope="col" class="org-right">evenness</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-right">13.96</td>
-<td class="org-left">LP4A</td>
-<td class="org-right">0.000346865721341954</td>
-<td class="org-right">8</td>
-<td class="org-right">10</td>
-<td class="org-right">4.33582151677443e-05</td>
-</tr>
-
-<tr>
-<td class="org-right">15.87</td>
-<td class="org-left">COL-D</td>
-<td class="org-right">0.000661489409554553</td>
-<td class="org-right">12</td>
-<td class="org-right">13</td>
-<td class="org-right">5.51241174628794e-05</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-</ol>
-</div>
-
-<div id="outline-container-org6c11cf5" class="outline-4">
-<h4 id="org6c11cf5"><span class="section-number-4">2.4.2</span> create the plots</h4>
-<div class="outline-text-4" id="text-2-4-2">
-<p>
-First we create the plot based on <code>strat_div</code>, the original data with the new
-columns for diversity and evenness. We create two separate plots and then add
-them together as subplots using the package <code>patchwork</code>. This is perfect when you
-have to make many adjustments to your subfigures.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-R">p_div &lt;- strat_div %&gt;%
-  ggplot(aes(x = age, y = diversity)) +
-  geom_line() +
-  labs(y = "Diversity")
-p_eq &lt;- strat_div %&gt;%
-  ggplot(aes(x = age, y = evenness)) +
-  geom_line() +
-  labs(y = "Evenness")
-# we use patchwork to put the two pluts together
-(p_div &amp; theme(axis.title.x = element_blank(), axis.text.x = element_blank())) / p_eq + labs(x = "Age (Ma)")
-</pre>
-</div>
-
-
-<div class="figure">
-<p><img src="diversity.png" alt="diversity.png" />
-</p>
-</div>
-
-<p>
-And to show that the tidy way results in the same plot, we tidy the data even
-further and then using <code>facets</code>.
-</p>
-<div class="org-src-container">
-<pre class="src src-R">ev %&gt;%
-  select(age, loc, diversity, evenness) %&gt;%
-  pivot_longer(diversity:evenness, names_to = "measure", values_to = "value") %&gt;%
-  ggplot(aes(x = age, y = value)) +
-  geom_line() +
-  facet_grid(rows = vars(measure), scales = "free_y")
-</pre>
-</div>
-
-
-<div class="figure">
-<p><img src="tidy_diversity.png" alt="tidy_diversity.png" />
-</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgce4662c" class="outline-2">
-<h2 id="orgce4662c"><span class="section-number-2">3</span> conclusion</h2>
-<div class="outline-text-2" id="text-3">
-<p>
-This was a quick look into some of the features of <code>R</code> for data analysis and
-plotting. I hope this will have peaked your interest and will get you to use
-excel only as a way of entering data ;-).
-</p>
-</div>
-</div>
-
-<div id="outline-container-org764c312" class="outline-2">
-<h2 id="org764c312"><span class="section-number-2">4</span> sessionInfo</h2>
-<div class="outline-text-2" id="text-4">
-<p>
-This just shows you which version of R and which packages I have installed in
-case there are future updates.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-R">sessionInfo()
-</pre>
-</div>
-
-<pre class="example">
-R version 3.6.3 (2020-02-29)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Arch Linux
-
-Matrix products: default
-BLAS:   /usr/lib/libopenblasp-r0.3.8.so
-LAPACK: /usr/lib/liblapack.so.3.9.0
-
-locale:
- [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C
- [9] LC_ADDRESS=C               LC_TELEPHONE=C
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base
-
-other attached packages:
-[1] patchwork_1.0.0 tidyr_1.0.2     dplyr_0.8.5     ggplot2_3.3.0
-[5] readr_1.3.1     devtools_2.2.2  usethis_1.5.1
-
-loaded via a namespace (and not attached):
- [1] Rcpp_1.0.3        compiler_3.6.3    pillar_1.4.3      prettyunits_1.1.1
- [5] remotes_2.1.1     tools_3.6.3       testthat_2.3.2    digest_0.6.25
- [9] pkgbuild_1.0.6    pkgload_1.0.2     memoise_1.1.0     tibble_2.1.3
-[13] lifecycle_0.2.0   gtable_0.3.0      pkgconfig_2.0.3   rlang_0.4.5
-[17] cli_2.0.2         withr_2.1.2       desc_1.2.0        fs_1.3.2
-[21] vctrs_0.2.3       hms_0.5.3         tidyselect_1.0.0  rprojroot_1.3-2
-[25] grid_3.6.3        glue_1.3.1        R6_2.4.1          processx_3.4.2
-[29] fansi_0.4.1       sessioninfo_1.1.1 farver_2.0.3      purrr_0.3.3
-[33] callr_3.4.2       magrittr_1.5      backports_1.1.5   scales_1.1.0
-[37] ps_1.3.2          ellipsis_0.3.0    assertthat_0.2.1  colorspace_1.4-1
-[41] labeling_0.3      utf8_1.1.4        munsell_0.5.0     crayon_1.3.4
-</pre>
-</div>
-</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Ilja J. Kocken</p>
-<p class="date">Created: 2020-03-11 Wed 17:19</p>
+<p class="date">Created: 2020-04-01 Wed 13:07</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
